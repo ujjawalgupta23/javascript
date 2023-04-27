@@ -11,6 +11,7 @@ const curScore1 = document.getElementById('current--1');
 
 const rollDiceBtn = document.querySelector('.btn--roll');
 const holdBtn = document.querySelector('.btn--hold');
+const newgameBtn = document.querySelector('.btn--new');
 
 score0Ele.textContent = 0;
 score1Ele.textContent = 0;
@@ -21,6 +22,7 @@ let currScore = 0;
 let currPlayer = 0;
 const playerScore = [0, 0];
 let gameState = true;
+let winner = 0;
 
 function setCurrScore() {
     document.getElementById(`current--${currPlayer}`).textContent = currScore;
@@ -58,6 +60,7 @@ holdBtn.addEventListener('click', function () {
         playerScore[currPlayer] += currScore;
         document.getElementById(`score--${currPlayer}`).textContent =
             playerScore[currPlayer];
+
         if (playerScore[currPlayer] >= 20) {
             gameState = false;
             diceEle.classList.add('hidden');
@@ -70,4 +73,25 @@ holdBtn.addEventListener('click', function () {
                 .classList.remove('player--active');
         } else changePlayer();
     }
+});
+
+newgameBtn.addEventListener('click', function () {
+    gameState = true;
+    playerScore[0] = 0;
+    playerScore[1] = 0;
+    currPlayer = 0;
+
+    score0Ele.textContent = 0;
+    score1Ele.textContent = 0;
+    curScore0.textContent = 0;
+    curScore1.textContent = 0;
+    // document.querySelectorAll('.current-score').textContent = 0 // querySelectorAll will return array, so this will not work
+    // document.querySelectorAll('.score').textContent = 0
+
+    document
+        .querySelector(`.player--${currPlayer}`)
+        .classList.remove('player--winner');
+
+    player0.classList.add('player--active');
+    player1.classList.remove('player--active');
 });
