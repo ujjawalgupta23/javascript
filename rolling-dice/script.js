@@ -18,11 +18,29 @@ score1Ele.textContent = 0;
 
 diceEle.classList.add('hidden');
 
-let currScore = 0;
-let currPlayer = 0;
-const playerScore = [0, 0];
-let gameState = true;
-let winner = 0;
+let currScore, currPlayer, playerScore, gameState, winner;
+
+function init() {
+    currScore = 0;
+    currPlayer = 0;
+    playerScore = [0, 0];
+    gameState = true;
+    winner = 0;
+
+    score0Ele.textContent = 0;
+    score1Ele.textContent = 0;
+    curScore0.textContent = 0;
+    curScore1.textContent = 0;
+
+    document
+        .querySelector(`.player--${currPlayer}`)
+        .classList.remove('player--winner');
+
+    player0.classList.add('player--active');
+    player1.classList.remove('player--active');
+}
+
+init();
 
 function setCurrScore() {
     document.getElementById(`current--${currPlayer}`).textContent = currScore;
@@ -75,23 +93,4 @@ holdBtn.addEventListener('click', function () {
     }
 });
 
-newgameBtn.addEventListener('click', function () {
-    gameState = true;
-    playerScore[0] = 0;
-    playerScore[1] = 0;
-    currPlayer = 0;
-
-    score0Ele.textContent = 0;
-    score1Ele.textContent = 0;
-    curScore0.textContent = 0;
-    curScore1.textContent = 0;
-    // document.querySelectorAll('.current-score').textContent = 0 // querySelectorAll will return array, so this will not work
-    // document.querySelectorAll('.score').textContent = 0
-
-    document
-        .querySelector(`.player--${currPlayer}`)
-        .classList.remove('player--winner');
-
-    player0.classList.add('player--active');
-    player1.classList.remove('player--active');
-});
+newgameBtn.addEventListener('click', init);
