@@ -10,7 +10,7 @@ const curScore0 = document.getElementById('current--0');
 const curScore1 = document.getElementById('current--1');
 
 const rollDiceBtn = document.querySelector('.btn--roll');
-const holdBtn = document.querySelector('.btn--hold')
+const holdBtn = document.querySelector('.btn--hold');
 
 score0Ele.textContent = 0;
 score1Ele.textContent = 0;
@@ -26,7 +26,7 @@ function setCurrScore() {
     document.getElementById(`current--${currPlayer}`).textContent = currScore;
 }
 
-function changePlayer () {
+function changePlayer() {
     currScore = 0;
     setCurrScore();
     currPlayer = currPlayer === 0 ? 1 : 0;
@@ -48,25 +48,26 @@ rollDiceBtn.addEventListener('click', function () {
             currScore += randNum;
             setCurrScore();
         } else {
-            changePlayer()
+            changePlayer();
         }
     }
 });
 
 holdBtn.addEventListener('click', function () {
     if (gameState) {
-    playerScore[currPlayer] += currScore
-    document.getElementById(`score--${currPlayer}`).textContent = playerScore[currPlayer]
-    if (playerScore[currPlayer] >= 20) {
-        gameState = false
-        diceEle.classList.add('hidden')
+        playerScore[currPlayer] += currScore;
+        document.getElementById(`score--${currPlayer}`).textContent =
+            playerScore[currPlayer];
+        if (playerScore[currPlayer] >= 20) {
+            gameState = false;
+            diceEle.classList.add('hidden');
 
-        document.querySelector(`.player--${currPlayer}`).classList.add('player--winner')
-        document.querySelector(`.player--${currPlayer}`).classList.remove('player--active')
-
+            document
+                .querySelector(`.player--${currPlayer}`)
+                .classList.add('player--winner');
+            document
+                .querySelector(`.player--${currPlayer}`)
+                .classList.remove('player--active');
+        } else changePlayer();
     }
-    else
-    changePlayer()
-}
-    
-})
+});
