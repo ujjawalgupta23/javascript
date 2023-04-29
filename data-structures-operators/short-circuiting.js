@@ -52,3 +52,8 @@ if (restaurant.orderPizza) {
 
 // this can be confusing, and you should not replace all if blocks
 restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+
+// Nullish Coalescing
+// Nullish: null and undefined, it will consider (0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
