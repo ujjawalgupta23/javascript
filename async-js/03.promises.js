@@ -1,6 +1,8 @@
 'use strict';
 
 /** Promise:
+ * Promise is an object representing eventual completion of asynchronous operation
+ * 
  * An object that is used as a placeholder for the future result of an asynchronous operation.
  *
  * A container for an asynchronously delivered value.
@@ -56,8 +58,17 @@ const renderCountry = function (data, className = '') {
 // using arrow
 const getCountryData = function (country) {
     fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
-        .then((response) => response.json())
-        .then((data) => renderCountry(data[0]));
+        .then((response) => response.json(), err=> console.log(err))
+        .then((data) => {
+            console.log(data);
+            return renderCountry(data[0]);
+        });
 };
-getCountryData('india');
-getCountryData('france');
+
+const btn = document.querySelector('.btn-country')
+btn.addEventListener('click', function (){
+    getCountryData('india');
+
+})
+
+// getCountryData('france');
