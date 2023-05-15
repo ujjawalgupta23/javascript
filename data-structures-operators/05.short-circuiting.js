@@ -56,4 +56,4 @@ restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
 // Nullish Coalescing
 // Nullish: null and undefined, it will consider (0 or '')
 const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect);
+console.log(guestCorrect);  // 0
