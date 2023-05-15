@@ -11,4 +11,15 @@ export const addToCart = function(product, quantity) {
     console.log(`${quantity} ${product} added to Cart`);
 }
 
+const totalPrice = 40;
+const totalQuantity = 4
 
+// We can export them as variables
+export {totalPrice, totalQuantity as tq}
+
+// If we only want to export only one thing from module
+
+export default function(product, quantity) {
+    cart.push({product, quantity})
+    console.log(`${quantity} ${product} added to Cart`);
+}
