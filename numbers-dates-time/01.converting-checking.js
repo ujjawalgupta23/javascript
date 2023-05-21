@@ -18,6 +18,7 @@ console.log(Number.parseInt('e23'));     // Nan
 console.log(Number.parseInt('2.5rem'));         // 2
 console.log(Number.parseFloat('2.5rem'));       // 2.5
 console.log(Number.parseFloat('    2.5rem  ')); // 2.5
+console.log(Number.parseFloat('abcd2.5rem')); NaN
 
 // .isNaN() is not a perfect wat to check if a value is a Number
 console.log(Number.isNaN(20));          // false
